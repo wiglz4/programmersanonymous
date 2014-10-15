@@ -11,7 +11,12 @@ namespace webapp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Response.Redirect("http://localhost:3270/Account/Login.aspx");
+        }
 
+        public void Redirect(string url)
+        {
+        
         }
     }
 }
