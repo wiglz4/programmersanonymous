@@ -32,7 +32,10 @@ namespace webapp
              ( •_•)>⌐■-■
              (⌐■_■)                                     */
 
-
+            /*
+            -- can blank out text boxes if you want */
+             
+             
             firstNameTextBox.Text = "";
             LastNameTextBox.Text = "";
             streetNameTextBox.Text = "";
@@ -43,6 +46,10 @@ namespace webapp
             routingNoTextBox.Text = "";
             accountNoTextBox.Text = "";
             checkNoTextBox.Text = "";
+             
+             
+             
+
 
         }  
 

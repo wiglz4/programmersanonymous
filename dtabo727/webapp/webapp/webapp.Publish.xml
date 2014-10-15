@@ -1,2 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<publishData />
+<publishData>
+  <publishProfile publishUrl="C:\Users\user\Desktop" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Web.config" publishTime="10/15/2014 10:49:43" />
+    <file relUrl="Site.Master" publishTime="10/15/2014 00:27:40" />
+    <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="10/10/2014 19:28:14" />
+    <file relUrl="checkEntry.aspx" publishTime="10/14/2014 23:58:28" />
+    <file relUrl="Account/Register.aspx" publishTime="10/10/2014 19:28:14" />
+    <file relUrl="HTMLPage1.htm" publishTime="10/14/2014 20:32:31" />
+    <file relUrl="Scripts/jquery-1.4.1.min.js" publishTime="10/10/2014 19:28:14" />
+    <file relUrl="bin/webapp.pdb" publishTime="10/15/2014 10:49:42" />
+    <file relUrl="Account/ChangePasswordSuccess.aspx" publishTime="10/10/2014 19:28:14" />
+    <file relUrl="Account/Login.aspx" publishTime="10/14/2014 21:41:17" />
+    <file relUrl="Styles/Site.css" publishTime="10/13/2014 10:38:33" />
+    <file relUrl="Scripts/jquery-1.4.1.js" publishTime="10/10/2014 19:28:14" />
+    <file relUrl="Account/ChangePassword.aspx" publishTime="10/10/2014 19:28:14" />
+    <file relUrl="Global.asax" publishTime="10/10/2014 19:28:14" />
+    <file relUrl="Account/Web.config" publishTime="10/10/2014 19:28:14" />
+    <file relUrl="About.aspx" publishTime="10/15/2014 00:27:40" />
+    <file relUrl="Default.aspx" publishTime="10/13/2014 10:20:36" />
+    <file relUrl="bin/webapp.dll" publishTime="10/15/2014 10:49:42" />
+  </publishProfile>
+</publishData>
