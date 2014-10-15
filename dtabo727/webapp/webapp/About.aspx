@@ -5,6 +5,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
+        <asp:HyperLink ID="HyperLink1" runat="server">HyperLink</asp:HyperLink>
         About
     </h2>
     <p>

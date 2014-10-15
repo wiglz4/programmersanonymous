@@ -41,6 +41,7 @@
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Home"/>
                         <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
+                        <asp:MenuItem NavigateUrl="~/checkEntry.aspx" Text="Check Entry"/>
                     </Items>
                 </asp:Menu>
             </div>
