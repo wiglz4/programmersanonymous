@@ -58,6 +58,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="printLetter.aspx" />
     <Content Include="HTMLPage1.htm" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
@@ -73,6 +74,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="checkEntry.aspx" />
+    <Content Include="checkQuery.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -110,6 +112,13 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="printLetter.aspx.cs">
+      <DependentUpon>printLetter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="printLetter.aspx.designer.cs">
+      <DependentUpon>printLetter.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -134,6 +143,13 @@
     </Compile>
     <Compile Include="checkEntry.aspx.designer.cs">
       <DependentUpon>checkEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="checkQuery.aspx.cs">
+      <DependentUpon>checkQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="checkQuery.aspx.designer.cs">
+      <DependentUpon>checkQuery.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
