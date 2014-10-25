@@ -22,7 +22,7 @@ namespace webapp
 
                 // Connect to the database and run the query.
                 OleDbConnection connection = new OleDbConnection(connectionString);
-                OleDbCommand cmd = new OleDbCommand("Select * From Customer", connection);
+                OleDbCommand cmd = new OleDbCommand("Select * From Company", connection);
                 OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
                 
                 // Fill the DataSet.
