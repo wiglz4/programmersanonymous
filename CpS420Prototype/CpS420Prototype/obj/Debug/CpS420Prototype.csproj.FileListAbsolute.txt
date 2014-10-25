@@ -1,9 +1,0 @@
-m:\documents\visual studio 2012\Projects\CpS420Prototype\CpS420Prototype\obj\Debug\CpS420Prototype.Prototype.resources
-m:\documents\visual studio 2012\Projects\CpS420Prototype\CpS420Prototype\obj\Debug\CpS420Prototype.Properties.Resources.resources
-m:\documents\visual studio 2012\Projects\CpS420Prototype\CpS420Prototype\obj\Debug\CpS420Prototype.csproj.GenerateResource.Cache
-m:\documents\visual studio 2012\Projects\CpS420Prototype\CpS420Prototype\bin\Debug\CpS420Prototype.exe.config
-m:\documents\visual studio 2012\Projects\CpS420Prototype\CpS420Prototype\bin\Debug\CpS420Prototype.exe
-m:\documents\visual studio 2012\Projects\CpS420Prototype\CpS420Prototype\bin\Debug\CpS420Prototype.pdb
-m:\documents\visual studio 2012\Projects\CpS420Prototype\CpS420Prototype\obj\Debug\CpS420Prototype.exe
-m:\documents\visual studio 2012\Projects\CpS420Prototype\CpS420Prototype\obj\Debug\CpS420Prototype.pdb
-m:\documents\visual studio 2012\Projects\CpS420Prototype\CpS420Prototype\bin\Debug\anon.sdf

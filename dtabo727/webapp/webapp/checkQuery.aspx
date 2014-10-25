@@ -10,7 +10,6 @@
         CssClass="failureNotification" ErrorMessage="Check Number is required." ToolTip="Check Number is required." 
         ValidationGroup="CheckQueryValidationGroup">*</asp:RequiredFieldValidator>
    
-   
   <p>
       &nbsp;</p>
 
@@ -18,5 +17,9 @@
   <p>
       &nbsp;</p>
     <asp:PlaceHolder ID="PlaceHolder1" runat="server">Query results show here</asp:PlaceHolder>
+    
+    <asp:GridView ID="myGridView" autogeneratecolumns="true" 
+        runat="server">
+    </asp:GridView>
 
 </asp:Content>
