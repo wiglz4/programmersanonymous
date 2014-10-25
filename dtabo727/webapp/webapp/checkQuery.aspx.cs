@@ -14,26 +14,29 @@ namespace webapp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            if (!IsPostBack)
+            QueryCheckNumber.Click += new EventHandler(this.QueryBtn_Click);
+
+
+        }
+
+        protected void QueryBtn_Click(Object sender, EventArgs e)
+        {
+            String connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
+            DataSet ds = new DataSet();
+
+            // Connect to the database and run the query.
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand cmd = new OleDbCommand("Select * From Company", connection);
+            OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
+
+            // Fill the DataSet.
+            adapter.Fill(ds);
+
+            //bind the dataset to gridview
+            if (ds.Tables.Count > 0)
             {
-                String connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;      
-                DataSet ds = new DataSet();
-
-                // Connect to the database and run the query.
-                OleDbConnection connection = new OleDbConnection(connectionString);
-                OleDbCommand cmd = new OleDbCommand("Select * From Company", connection);
-                OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
-                
-                // Fill the DataSet.
-                adapter.Fill(ds);
-
-                //bind the dataset to gridview
-                if (ds.Tables.Count > 0)
-                {
-                    myGridView.DataSource = ds;
-                    myGridView.DataBind();
-                }
+                myGridView.DataSource = ds;
+                myGridView.DataBind();
             }
         }
     }
