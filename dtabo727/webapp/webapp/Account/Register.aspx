@@ -60,24 +60,14 @@
                                      CssClass="failureNotification" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match."
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:CompareValidator>
                             </p>
-                            <p>
-                                &nbsp;</p>
                             
-                            <p>
-                                <asp:Label ID="ConfirmCreationRightsLabel" runat="server" AssociatedControlID="ConfirmCreationRights">Admin Password:</asp:Label>
-                                <asp:TextBox ID="ConfirmCreationRights" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
-                                <asp:RequiredFieldValidator ControlToValidate="ConfirmCreationRights" CssClass="failureNotification" Display="Dynamic" 
-                                     ErrorMessage="Admin password is required." ID="RequiredFieldValidator1" runat="server" 
-                                     ToolTip="Confirm Password is required." ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
-                            </p>
-                            <p>
-                                &nbsp;</p>
-                        </fieldset></div>
-                    </fieldset>
-                    <p class="submitButton">
+                            <p class="submitButton">
                         <asp:Button ID="CreateUserButton" runat="server" CommandName="MoveNext" 
                             Text="Create User" ValidationGroup="RegisterUserValidationGroup" />
-                    </p>
+                            </p>
+                        </fieldset></div>
+                    </fieldset>
+                    
                     </div>
                 </ContentTemplate>
                 <CustomNavigationTemplate>
