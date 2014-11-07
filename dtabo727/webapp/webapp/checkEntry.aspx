@@ -101,6 +101,20 @@
                              ValidationGroup="CheckEntryValidationGroup">*</asp:RequiredFieldValidator>
     <br />
     <br />
+    <br />
+    <br />
+
+    <asp:Label ID="Label10" runat="server" Text="Store ID:"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:TextBox ID="storeIDTextBox" runat="server"></asp:TextBox>
+
+
+                            
+                            <asp:RequiredFieldValidator ID="StoreIDRequired" runat="server" ControlToValidate="storeIDTextBox" 
+                             CssClass="failureNotification" ErrorMessage="Sore ID is required." 
+                             ValidationGroup="CheckEntryValidationGroup">*</asp:RequiredFieldValidator>
+    <br />
+    <br />
                     <asp:Button ID="checkEntrySubmitButton" runat="server" CommandName="Submit" Text="Submit Check" 
                         ValidationGroup="CheckEntryValidationGroup" onclick="checkEntrySubmitButton_Click"/>
     <br />

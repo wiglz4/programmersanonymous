@@ -18,6 +18,7 @@
             </span>
             <asp:ValidationSummary ID="LoginUserValidationSummary" runat="server" CssClass="failureNotification" 
                  ValidationGroup="LoginUserValidationGroup"/>
+            <asp:Label ID="BadCredentialsLabel" runat="server" AssociatedControlID="BadCredentialsLabel"></asp:Label>
             <div class="accountInfo">
                 <fieldset class="login">
                     <legend>Account Information</legend>
