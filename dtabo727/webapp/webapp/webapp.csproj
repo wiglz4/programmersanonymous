@@ -124,6 +124,7 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Check.cs" />
     <Compile Include="printLetter.aspx.cs">
       <DependentUpon>printLetter.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

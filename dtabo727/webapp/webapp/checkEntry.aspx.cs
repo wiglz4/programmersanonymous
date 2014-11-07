@@ -23,7 +23,7 @@ namespace webapp
             DataSet ds = new DataSet();
 
             String accountID = routingNoTextBox.Text + ':' + accountNoTextBox.Text;
-            double epoch = (DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
+           // double epoch = (DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
 
             // Connect to the database and run the query.
             OleDbConnection connection = new OleDbConnection(connectionString);

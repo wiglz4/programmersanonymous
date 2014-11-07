@@ -21,16 +21,7 @@ namespace webapp
 
         protected void QueryBtn_Click(Object sender, EventArgs e)
         {
-            String connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
-            DataSet ds = new DataSet();
-
-            // Connect to the database and run the query.
-            OleDbConnection connection = new OleDbConnection(connectionString);
-            OleDbCommand cmd = new OleDbCommand("Select * From Company", connection);
-            OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
-
-            // Fill the DataSet.
-            adapter.Fill(ds);
+            DataSet ds = Check.Query("");
 
             //bind the dataset to gridview
             if (ds.Tables.Count > 0)

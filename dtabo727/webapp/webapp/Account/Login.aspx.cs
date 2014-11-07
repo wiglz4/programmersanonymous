@@ -40,12 +40,13 @@ namespace webapp.Account
 
         public bool verifyLogin(string uName, string pWord, string cID)
         {
-            //get data from database
+            // Connect to the database
             String connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
-            DataSet ds = new DataSet();
-
-            // Connect to the database and run the query.
             OleDbConnection connection = new OleDbConnection(connectionString);
+
+
+            // pull data and run the query.
+            DataSet ds = new DataSet();
             string query = "Select * From [User] Where (Username = '" + uName + "') And (Password = '" + pWord + "') And ([Company ID] = '" + cID + "')";
             OleDbCommand cmd = new OleDbCommand(query, connection);
             OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
