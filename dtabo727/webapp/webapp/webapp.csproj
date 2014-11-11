@@ -124,7 +124,8 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Check.cs" />
+    <Compile Include="SOURCE\Account.cs" />
+    <Compile Include="SOURCE\Check.cs" />
     <Compile Include="printLetter.aspx.cs">
       <DependentUpon>printLetter.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -164,6 +165,9 @@
     <Compile Include="checkQuery.aspx.designer.cs">
       <DependentUpon>checkQuery.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SOURCE\Company.cs" />
+    <Compile Include="SOURCE\Store.cs" />
+    <Compile Include="SOURCE\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
