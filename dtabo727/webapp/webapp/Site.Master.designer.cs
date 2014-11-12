@@ -22,6 +22,15 @@ namespace webapp {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
         
         /// <summary>
+        /// BodyPlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder BodyPlaceHolder;
+        
+        /// <summary>
         /// HeadLoginView control.
         /// </summary>
         /// <remarks>
@@ -31,13 +40,13 @@ namespace webapp {
         protected global::System.Web.UI.WebControls.LoginView HeadLoginView;
         
         /// <summary>
-        /// NavigationMenu control.
+        /// MenuLoginView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu NavigationMenu;
+        protected global::System.Web.UI.WebControls.LoginView MenuLoginView;
         
         /// <summary>
         /// MainContent control.

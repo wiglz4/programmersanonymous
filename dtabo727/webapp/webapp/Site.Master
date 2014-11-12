@@ -15,8 +15,11 @@
     </style>
 </head>
 <body>
+    <asp:ContentPlaceHolder ID="BodyPlaceHolder" runat="server">
+    </asp:ContentPlaceHolder>
     <form runat="server">
     <div class="page">
+        
         <div class="header">
             <div class="title">
                 <h1>
@@ -28,26 +31,34 @@
             <div class="loginDisplay">
                 <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
-                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
+                        
                     </AnonymousTemplate>
                     <LoggedInTemplate>
                         Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
                         [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+                        
                     </LoggedInTemplate>
                 </asp:LoginView>
             </div>
             <div class="clear hideSkiplink">
-                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                
+                <asp:LoginView ID="MenuLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>                    
+                        <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
-                        <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Home"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
+                      
                         <asp:MenuItem NavigateUrl="~/checkEntry.aspx" Text="Enter Check"/>
                         <asp:MenuItem NavigateUrl="~/checkQuery.aspx" Text="Query Check"/>
-                        <asp:MenuItem NavigateUrl="~/Account/Register.aspx" Text="Add User"/>
                         <asp:MenuItem NavigateUrl="~/printLetter.aspx" Text="Print Letter"/>
+                        <asp:MenuItem NavigateUrl="~/Account/Register.aspx" Text="Add User"/>
 
                     </Items>
                 </asp:Menu>
+                    </LoggedInTemplate>
+                </asp:LoginView>
+                
             </div>
         </div>
         <div class="main">

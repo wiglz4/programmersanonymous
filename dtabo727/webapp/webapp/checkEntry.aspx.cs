@@ -12,9 +12,71 @@ namespace webapp
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        public static Control FindControlRecursive(Control Root, string Id)
+        {
+            if (Root.ID == Id)
+                return Root;
+            foreach (Control Ctl in Root.Controls)
+            {
+                Control FoundCtl = FindControlRecursive(Ctl, Id);
+                if (FoundCtl != null)
+                    return FoundCtl;
+            }
+
+
+
+            return null;
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
+            int caseSwitch = 2;//  grab value from current loggedin user's privilege                       ****NEED TO IMPLEMENT****
+            switch (caseSwitch)
+            {
+                // case 1 = standard user (data-entry clerk) {checkEntry only}
+                case 1:
+                    {
+                       Menu menu = (Menu)WebForm1.FindControlRecursive(this.Master, "NavigationMenu");
+                       // Menu menu = (Menu)this.FindControl("NavigationMenu");
+                        MenuItemCollection menuItems = menu.Items;
+                        
 
+                        for (int i = 0; i < menuItems.Count; i++)
+                        {
+                            if (menuItems[i].Text != "Enter Check")
+                            {
+                                menuItems.Remove(menuItems[i]);
+                                i--;
+                            }
+                        }
+                        
+                    }
+                    break;
+
+                // case 2 = local treasurer user (data-entry + data-retrieval + print letters) {removes Add User}
+                case 2:
+                    {
+                        Menu menu = (Menu)WebForm1.FindControlRecursive(this.Master, "NavigationMenu");
+                        // Menu menu = (Menu)this.FindControl("NavigationMenu");
+                        MenuItemCollection menuItems = menu.Items;
+                        
+                       
+                        for (int i = 0; i < menuItems.Count; i++)
+                        {
+                            if (menuItems[i].Text == "Add User")
+                            {
+                                menuItems.Remove(menuItems[i]);
+                                i--;
+                            }
+                        }
+                        
+                    }
+                    break;
+                case 3:
+                    Console.WriteLine("Default case");
+                    break;
+            }
+            
         }
 
         protected void checkEntrySubmitButton_Click(object sender, EventArgs e)
