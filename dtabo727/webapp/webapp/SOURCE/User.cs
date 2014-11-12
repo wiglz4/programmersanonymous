@@ -86,5 +86,38 @@ namespace webapp.SOURCE
             return ds;
         }
 
+        //METHOD: Login
+        //returns string error message
+        public static bool Login(string uName, string pWord, string cID)
+        {
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            
+            // pull data and run the query.
+            OleDbCommand cmd = new OleDbCommand("Select * From [User] Where (Username = @uName) And (Password = @pWord) And ([Company ID] = @cID)", connection);
+            cmd.Parameters.AddWithValue("@uName", uName);
+            cmd.Parameters.AddWithValue("@pWord", pWord);
+            cmd.Parameters.AddWithValue("@cID", cID);
+            OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+
+            // verify username and password
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                //credentials were wrong
+                return false;
+            }
+            else if (ds.Tables[0].Rows.Count == 1)
+            {
+                //congratulations login is succesful
+                return true;
+            }
+            else
+            {
+                //"Error: More than one record of this user exists. Please contact your system administrator.";
+                return false;
+            }
+        }
     }
 }

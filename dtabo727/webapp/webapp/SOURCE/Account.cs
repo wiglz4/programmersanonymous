@@ -16,26 +16,38 @@ namespace webapp.SOURCE
 
         //Method: Insert
         //returns true if succesfully inserted into database and false otherwise
-        //number of columns must match number of values
-        //columns and values formatted as "col1,col2,col3" "val1,val2,val3"
-        public static bool Insert(string Columns, string Values)
+        public static bool Insert(string accountID, string strID, string fName, string lName, string street, string city, string state, string zipcode)
         {
-            OleDbConnection connection = new OleDbConnection(connectionString);
-            OleDbCommand cmd;
-            if (Columns == "")
+            try
             {
-                cmd = new OleDbCommand("Insert Into [Account] Values " + "(" + Values + ")", connection);
+                OleDbConnection connection = new OleDbConnection(connectionString);
+                OleDbCommand cmd = new OleDbCommand("Insert Into Account([Account ID], [Store ID], [First Name], [Last Name], Street, City, State, ZipCode) Values (@AccountIDParam, @StoreIDParam, @FirstNameParam, @LastNameParam, @StreetParam, @CityParam, @StateParam, @ZipcodeParam)", connection);
+                cmd.Parameters.AddWithValue("@AccountIDParam", accountID);
+                cmd.Parameters.AddWithValue("@StoreIDParam", strID);
+                cmd.Parameters.AddWithValue("@FirstNameParam", fName);
+                cmd.Parameters.AddWithValue("@LastNameParam", lName);
+                cmd.Parameters.AddWithValue("@StreetParam", street);
+                cmd.Parameters.AddWithValue("@CityParam", city);
+                cmd.Parameters.AddWithValue("@StateParam", state);
+                cmd.Parameters.AddWithValue("@ZipCodeParam", zipcode);
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Close();
+                return true;
             }
-            else
+            catch (Exception e)
             {
-                cmd = new OleDbCommand("Insert Into [Account]" + " (" + Columns + ") " + "Values" + " (" + Values + ")", connection);
-            }
-
-            int result = cmd.ExecuteNonQuery();
-            connection.Close();
-
-            if (result == 0) return true;
-            else return false;
+                if (e.Message == "The changes you requested to the table were not successful because they would create duplicate values in the index, primary key, or relationship.  Change the data in the field or fields that contain duplicate data, remove the index, or redefine the index to permit duplicate entries and try again.")
+                {
+                    //it won't let you insert if there is a duplicate record. doesn't mean somethin blew up
+                    return true;
+                }
+                else
+                {
+                    //somethin blew up
+                    return false;
+                }
+            }           
         }
 
         //METHOD: Update
@@ -85,6 +97,5 @@ namespace webapp.SOURCE
 
             return ds;
         }
-
     }
 }

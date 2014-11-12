@@ -16,27 +16,28 @@ namespace webapp.SOURCE
 
         //Method: Insert
         //returns true if succesfully inserted into database and false otherwise
-        //number of columns must match number of values
-        //columns and values formatted as "col1,col2,col3" "val1,val2,val3"
-        public static bool Insert(string Columns, string Values)
+        public static bool Insert(string accountID, string checkValue, string checkNo)
         {
-            OleDbConnection connection = new OleDbConnection(connectionString);
-            OleDbCommand cmd;
-
-            if (Columns == null)
+            try
             {
-                cmd = new OleDbCommand("Insert Into [Check] Values " + "(" + Values + ")", connection);
+                OleDbConnection connection = new OleDbConnection(connectionString);
+                OleDbCommand cmd = new OleDbCommand("Insert Into [Check]([Account ID], [Amount Paid], [Amount Due], [Check Number], [Letter Sent Number]) Values (@AccountIDParam, @AmountPaidParam, @AmountDueParam, @CheckNoParam, @LetterNoParam)", connection);
+                cmd.Parameters.AddWithValue("@AccountIDParam", accountID);
+                cmd.Parameters.AddWithValue("@AmountPaidParam", "0.00");
+                cmd.Parameters.AddWithValue("@AmountDueParam", checkValue);
+                cmd.Parameters.AddWithValue("@CheckNoParam", checkNo);
+                cmd.Parameters.AddWithValue("@LetterNoParam", '0');
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Close();
+                return true;
             }
-            else
+            catch
             {
-                cmd = new OleDbCommand("Insert Into [Check]" + " (" + Columns + ") " + "Values"  + " (" + Values + ")", connection);
+                //somethin blew up
+                return false;
             }
-            
-            int result = cmd.ExecuteNonQuery();
-            connection.Close();
 
-            if (result == 0) return true; 
-            else return false;
         }
 
         //METHOD: Update

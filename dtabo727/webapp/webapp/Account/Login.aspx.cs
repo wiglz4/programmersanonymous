@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.OleDb;
 using System.Configuration;
+using webapp.SOURCE;
 
 namespace webapp.Account
 {
@@ -29,47 +30,19 @@ namespace webapp.Account
             TextBox compID = (TextBox)LoginUser.FindControl("CompanyID");
             string cID = compID.Text;
 
-            e.Authenticated = verifyLogin(uName, pWord, cID);
+            if (SOURCE.User.Login(uName, pWord, cID)) 
+            {
+                e.Authenticated = true;
+            } 
+            else 
+            {
+                e.Authenticated = false;
+            }
         }
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
 
-
-        }
-
-        public bool verifyLogin(string uName, string pWord, string cID)
-        {
-            // Connect to the database
-            String connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
-            OleDbConnection connection = new OleDbConnection(connectionString);
-
-
-            // pull data and run the query.
-            DataSet ds = new DataSet();
-            string query = "Select * From [User] Where (Username = '" + uName + "') And (Password = '" + pWord + "') And ([Company ID] = '" + cID + "')";
-            OleDbCommand cmd = new OleDbCommand(query, connection);
-            OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
-
-            // Fill the DataSet.
-            adapter.Fill(ds);
-
-            // verify username and password
-            if (ds.Tables[0].Rows.Count == 0)
-            {
-                //credentials were wrong
-                return false;
-            }
-            else if (ds.Tables[0].Rows.Count == 1)
-            {
-                //congratulations login is succesfull
-                return true;
-            }
-            else
-            {
-                //error more than one record of this user exists. please contact system administrator
-                return false;
-            }
         }
     }
 }
