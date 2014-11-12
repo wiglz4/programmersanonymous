@@ -21,13 +21,14 @@ namespace webapp.SOURCE
         public static bool Insert(string Columns, string Values)
         {
             OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand cmd;
             if (Columns == null)
             {
-                OleDbCommand cmd = new OleDbCommand("Insert Into [Store] Values " + "(" + Values + ")", connection);
+                cmd = new OleDbCommand("Insert Into [Store] Values " + "(" + Values + ")", connection);
             }
             else
             {
-                OleDbCommand cmd = new OleDbCommand("Insert Into [Store]" + " (" + Columns + ") " + "Values" + " (" + Values + ")", connection);
+                cmd = new OleDbCommand("Insert Into [Store]" + " (" + Columns + ") " + "Values" + " (" + Values + ")", connection);
             }
 
             int result = cmd.ExecuteNonQuery();
