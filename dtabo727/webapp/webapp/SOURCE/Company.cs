@@ -18,24 +18,40 @@ namespace webapp.SOURCE
         //returns true if succesfully inserted into database and false otherwise
         //number of columns must match number of values
         //columns and values formatted as "col1,col2,col3" "val1,val2,val3"
-        public static bool Insert(string Columns, string Values)
+        public static bool Insert(string compID, string compName, string compStreet, string compCity, string compState, string compZip)
         {
-            OleDbConnection connection = new OleDbConnection(connectionString);
-            OleDbCommand cmd;
-            if (Columns == null)
+            try
             {
-                cmd = new OleDbCommand("Insert Into [Company] Values " + "(" + Values + ")", connection);
+                OleDbConnection connection = new OleDbConnection(connectionString);
+                OleDbCommand cmd = new OleDbCommand(@"Insert Into [Company]([Company ID], [Company Name], [Street], [City], [State], [Zipcode]) 
+                    Values (@CompanyIDParam, @CompanyNameParam, @StreetParam, @CityParam, @StateParam, @ZipcodeParam)", connection);
+                cmd.Parameters.AddWithValue("@CompanyIDParam", compID);
+                cmd.Parameters.AddWithValue("@CompanyNameParam", compName);
+                cmd.Parameters.AddWithValue("@StreetParam", compStreet);
+                cmd.Parameters.AddWithValue("@CityParam", compCity);
+                cmd.Parameters.AddWithValue("@StateParam", compState);
+                cmd.Parameters.AddWithValue("@ZipcodeParam", compZip);
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Close();
+                return true;
             }
-            else
+            catch (Exception e)
             {
-                cmd = new OleDbCommand("Insert Into [Company]" + " (" + Columns + ") " + "Values" + " (" + Values + ")", connection);
+                if (e.Message == @"The changes you requested to the table were not successful because they would create duplicate 
+                values in the index, primary key, or relationship.  Change the data in the field or fields that contain duplicate 
+                data, remove the index, or redefine the index to permit duplicate entries and try again.")
+                {
+                    //it won't let you insert if there is a duplicate record. doesn't mean somethin blew up
+                    return true;
+                }
+                else
+                {
+                    //somethin blew up
+                    return false;
+                }
             }
 
-            int a = cmd.ExecuteNonQuery();
-            connection.Close();
-
-            if (a == 0) return true;
-            else return false;
         }
 
         //METHOD: Update

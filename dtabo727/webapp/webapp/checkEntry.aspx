@@ -32,7 +32,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <br />
     <br />
-    <asp:Label ID="Label3" runat="server" Text="Address:"></asp:Label>
+    <asp:Label ID="Label3" runat="server" Text="Street:"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
     <asp:TextBox ID="streetNameTextBox" runat="server"></asp:TextBox>
                                  

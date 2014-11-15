@@ -1,17 +1,5 @@
-D:\seniorFall\CpsDevelopment\storageDriveGit\programmersanonymous\dtabo727\webapp\webapp\bin\webapp.dll
-D:\seniorFall\CpsDevelopment\storageDriveGit\programmersanonymous\dtabo727\webapp\webapp\bin\webapp.pdb
-D:\seniorFall\CpsDevelopment\storageDriveGit\programmersanonymous\dtabo727\webapp\webapp\obj\Debug\webapp.dll
-D:\seniorFall\CpsDevelopment\storageDriveGit\programmersanonymous\dtabo727\webapp\webapp\obj\Debug\webapp.pdb
-M:\Documents\Documents\Schoolwork\College\05 Final Year\CpS420\_PROJECT\programmersanonymous\dtabo727\webapp\webapp\bin\webapp.dll
-M:\Documents\Documents\Schoolwork\College\05 Final Year\CpS420\_PROJECT\programmersanonymous\dtabo727\webapp\webapp\bin\webapp.pdb
-M:\Documents\Documents\Schoolwork\College\05 Final Year\CpS420\_PROJECT\programmersanonymous\dtabo727\webapp\webapp\obj\Debug\webapp.dll
-M:\Documents\Documents\Schoolwork\College\05 Final Year\CpS420\_PROJECT\programmersanonymous\dtabo727\webapp\webapp\obj\Debug\webapp.pdb
-<<<<<<< HEAD
 E:\seniorFall\CpsDevelopment\storageDriveGit\programmersanonymous\dtabo727\webapp\webapp\bin\webapp.dll
 E:\seniorFall\CpsDevelopment\storageDriveGit\programmersanonymous\dtabo727\webapp\webapp\bin\webapp.pdb
 E:\seniorFall\CpsDevelopment\storageDriveGit\programmersanonymous\dtabo727\webapp\webapp\obj\Debug\webapp.csprojResolveAssemblyReference.cache
 E:\seniorFall\CpsDevelopment\storageDriveGit\programmersanonymous\dtabo727\webapp\webapp\obj\Debug\webapp.dll
 E:\seniorFall\CpsDevelopment\storageDriveGit\programmersanonymous\dtabo727\webapp\webapp\obj\Debug\webapp.pdb
-=======
-M:\Documents\Documents\Schoolwork\College\05 Final Year\CpS420\_PROJECT\programmersanonymous\dtabo727\webapp\webapp\obj\Debug\webapp.csprojResolveAssemblyReference.cache
->>>>>>> 354c8d0e17604026a475bf465602303f8f8de3d4

@@ -18,7 +18,7 @@ namespace webapp.Account
         {
         } 
             
-        protected void LoginUser_Authenticate(object sender, AuthenticateEventArgs e)
+        public void LoginUser_Authenticate(object sender, AuthenticateEventArgs e)
         {
 
             //verify what was in username box to data set
@@ -29,6 +29,11 @@ namespace webapp.Account
             string pWord = password.Text;
             TextBox compID = (TextBox)LoginUser.FindControl("CompanyID");
             string cID = compID.Text;
+
+            Session["uName"] = uName;
+            Session["pWord"] = pWord;
+            Session["cID"] = cID;
+
 
             if (SOURCE.User.Login(uName, pWord, cID)) 
             {

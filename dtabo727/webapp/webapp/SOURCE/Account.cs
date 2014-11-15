@@ -21,7 +21,8 @@ namespace webapp.SOURCE
             try
             {
                 OleDbConnection connection = new OleDbConnection(connectionString);
-                OleDbCommand cmd = new OleDbCommand("Insert Into Account([Account ID], [Store ID], [First Name], [Last Name], Street, City, State, ZipCode) Values (@AccountIDParam, @StoreIDParam, @FirstNameParam, @LastNameParam, @StreetParam, @CityParam, @StateParam, @ZipcodeParam)", connection);
+                OleDbCommand cmd = new OleDbCommand(@"Insert Into [Account]([Account ID], [Store ID], [First Name], [Last Name], [Street], [City], [State], [ZipCode]) 
+                Values (@AccountIDParam, @StoreIDParam, @FirstNameParam, @LastNameParam, @StreetParam, @CityParam, @StateParam, @ZipcodeParam)", connection);
                 cmd.Parameters.AddWithValue("@AccountIDParam", accountID);
                 cmd.Parameters.AddWithValue("@StoreIDParam", strID);
                 cmd.Parameters.AddWithValue("@FirstNameParam", fName);
@@ -37,7 +38,9 @@ namespace webapp.SOURCE
             }
             catch (Exception e)
             {
-                if (e.Message == "The changes you requested to the table were not successful because they would create duplicate values in the index, primary key, or relationship.  Change the data in the field or fields that contain duplicate data, remove the index, or redefine the index to permit duplicate entries and try again.")
+                if (e.Message == @"The changes you requested to the table were not successful because they would create duplicate 
+                values in the index, primary key, or relationship.  Change the data in the field or fields that contain duplicate 
+                data, remove the index, or redefine the index to permit duplicate entries and try again.")
                 {
                     //it won't let you insert if there is a duplicate record. doesn't mean somethin blew up
                     return true;

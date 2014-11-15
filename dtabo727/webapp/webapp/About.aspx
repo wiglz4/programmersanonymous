@@ -9,10 +9,5 @@
         About
     </h2>
     <p>
-        Nick Street<br>
-        Josh Mangum<br>
-        Benji Denning<br>
-        John Wiglesworth <br>
-        David Tabor<br>
     </p>
 </asp:Content>

@@ -23,18 +23,15 @@ namespace webapp
                 if (FoundCtl != null)
                     return FoundCtl;
             }
-
-
-
             return null;
-
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            int caseSwitch = 2;//  grab value from current loggedin user's privilege                       ****NEED TO IMPLEMENT****
+            int caseSwitch = SOURCE.User.getPrivilege();//  grab value from current loggedin user's privilege
             switch (caseSwitch)
             {
-                // case 1 = standard user (data-entry clerk) {checkEntry only}
+                // case 1 = standard user (data-e ntry clerk) {checkEntry only}
                 case 1:
                     {
                        Menu menu = (Menu)WebForm1.FindControlRecursive(this.Master, "NavigationMenu");
@@ -74,7 +71,7 @@ namespace webapp
                     }
                     break;
                 case 3:
-                    Console.WriteLine("Default case");
+                    
                     break;
             }
             

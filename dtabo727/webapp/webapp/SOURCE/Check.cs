@@ -16,27 +16,39 @@ namespace webapp.SOURCE
 
         //Method: Insert
         //returns true if succesfully inserted into database and false otherwise
-        public static bool Insert(string accountID, string checkValue, string checkNo)
+        public static bool Insert(string accountID, string checkPaid, string checkValue, string checkNo, string letterNo, string checkDate)
         {
             try
             {
                 OleDbConnection connection = new OleDbConnection(connectionString);
-                OleDbCommand cmd = new OleDbCommand("Insert Into [Check]([Account ID], [Amount Paid], [Amount Due], [Check Number], [Letter Sent Number]) Values (@AccountIDParam, @AmountPaidParam, @AmountDueParam, @CheckNoParam, @LetterNoParam)", connection);
+                OleDbCommand cmd = new OleDbCommand(@"Insert Into [Check]([Account ID], [Amount Paid], [Amount Due], [Check Number], [Letter Sent Number], [Check Date]) 
+                    Values (@AccountIDParam, @AmountPaidParam, @AmountDueParam, @CheckNoParam, @LetterNoParam, @CheckDateParam)", connection);
                 cmd.Parameters.AddWithValue("@AccountIDParam", accountID);
-                cmd.Parameters.AddWithValue("@AmountPaidParam", "0.00");
+                cmd.Parameters.AddWithValue("@AmountPaidParam", checkPaid);
                 cmd.Parameters.AddWithValue("@AmountDueParam", checkValue);
                 cmd.Parameters.AddWithValue("@CheckNoParam", checkNo);
-                cmd.Parameters.AddWithValue("@LetterNoParam", '0');
+                cmd.Parameters.AddWithValue("@LetterNoParam", letterNo);
+                cmd.Parameters.AddWithValue("@CheckDateParam", checkDate);
                 connection.Open();
                 cmd.ExecuteNonQuery();
                 connection.Close();
                 return true;
             }
-            catch
+            catch (Exception e)
             {
-                //somethin blew up
-                return false;
-            }
+                if (e.Message == @"The changes you requested to the table were not successful because they would create duplicate 
+                values in the index, primary key, or relationship.  Change the data in the field or fields that contain duplicate 
+                data, remove the index, or redefine the index to permit duplicate entries and try again.")
+                {
+                    //it won't let you insert if there is a duplicate record. doesn't mean somethin blew up
+                    return true;
+                }
+                else
+                {
+                    //somethin blew up
+                    return false;
+                }
+            }  
 
         }
 

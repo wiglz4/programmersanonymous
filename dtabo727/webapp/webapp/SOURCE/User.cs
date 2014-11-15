@@ -18,24 +18,41 @@ namespace webapp.SOURCE
         //returns true if succesfully inserted into database and false otherwise
         //number of columns must match number of values
         //columns and values formatted as "col1,col2,col3" "val1,val2,val3"
-        public static bool Insert(string Columns, string Values)
+        public static bool Insert(string userID, string storeID, string compID, string fName, string lName, string uName, string pass, int priv)
         {
-            OleDbConnection connection = new OleDbConnection(connectionString);
-            OleDbCommand cmd;
-            if (Columns == null)
+            try
             {
-                cmd = new OleDbCommand("Insert Into [User] Values " + "(" + Values + ")", connection);
+                OleDbConnection connection = new OleDbConnection(connectionString);
+                OleDbCommand cmd = new OleDbCommand(@"Insert Into [User]([Store ID], [Company ID], [First Name], [Last Name], [Username], [Password], [Privilege]) 
+                    Values (@StoreIDParam, @CompanyIDParam, @FNameParam, @LNameParam, @UsernameParam, @PasswordParam, @PrivilegeParam)", connection);
+                cmd.Parameters.AddWithValue("@StoreIDParam", storeID);
+                cmd.Parameters.AddWithValue("@CompanyIDParam", compID);
+                cmd.Parameters.AddWithValue("@FNameParam", fName);
+                cmd.Parameters.AddWithValue("@LNameParam", lName);
+                cmd.Parameters.AddWithValue("@UsernameParam", uName);
+                cmd.Parameters.AddWithValue("@PasswordParam", pass);
+                cmd.Parameters.AddWithValue("@PrivilegeParam", priv);
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Close();
+                return true;
             }
-            else
+            catch (Exception e)
             {
-                cmd = new OleDbCommand("Insert Into [User]" + " (" + Columns + ") " + "Values" + " (" + Values + ")", connection);
+                if (e.Message == @"The changes you requested to the table were not successful because they would create duplicate 
+                values in the index, primary key, or relationship.  Change the data in the field or fields that contain duplicate 
+                data, remove the index, or redefine the index to permit duplicate entries and try again.")
+                {
+                    //it won't let you insert if there is a duplicate record. doesn't mean somethin blew up
+                    return true;
+                }
+                else
+                {
+                    //somethin blew up
+                    return false;
+                }
             }
 
-            int result = cmd.ExecuteNonQuery();
-            connection.Close();
-
-            if (result == 0) return true;
-            else return false;
         }
 
         //METHOD: Update
@@ -118,6 +135,31 @@ namespace webapp.SOURCE
                 //"Error: More than one record of this user exists. Please contact your system administrator.";
                 return false;
             }
+        }
+
+        //METHOD: Privilege
+        //returns Int
+        public static int getPrivilege()
+        {
+            string uName = HttpContext.Current.Session["uName"].ToString();
+            string pWord = HttpContext.Current.Session["pWord"].ToString();
+            string cID = HttpContext.Current.Session["cID"].ToString();
+
+            // Connect to the database and run the query.
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand cmd = new OleDbCommand("Select * From [User] Where (Username = @uName) And (Password = @pWord) And ([Company ID] = @cID)", connection);
+            cmd.Parameters.AddWithValue("@uName", uName);
+            cmd.Parameters.AddWithValue("@pWord", pWord);
+            cmd.Parameters.AddWithValue("@cID", cID);
+            OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
+
+            // Fill the DataSet.
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+
+            int privilege = int.Parse(ds.Tables[0].Rows[0]["Privilege"].ToString());
+            connection.Close();
+            return privilege;
         }
     }
 }
