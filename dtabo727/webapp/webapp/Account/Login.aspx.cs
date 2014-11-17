@@ -38,16 +38,19 @@ namespace webapp.Account
             if (SOURCE.User.Login(uName, pWord, cID)) 
             {
                 e.Authenticated = true;
+                //Server.Transfer("~/checkEntry.aspx", false);
+                //Response.Redirect("~/checkEntry.aspx",true);
             } 
             else 
             {
                 e.Authenticated = false;
             }
+            
         }
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

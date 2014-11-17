@@ -11,7 +11,7 @@
         Please enter your username and password. If you don't have an account, contact your manager.
     </p>
     <asp:Login ID="LoginUser" runat="server" EnableViewState="false" 
-    RenderOuterTable="false" onauthenticate="LoginUser_Authenticate">
+    RenderOuterTable="false" onauthenticate="LoginUser_Authenticate" DestinationPageUrl="~/checkEntry.aspx">
         <LayoutTemplate>
             <span class="failureNotification">
                 <asp:Literal ID="FailureText" runat="server"></asp:Literal>

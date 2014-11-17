@@ -23,7 +23,9 @@ namespace webapp
                 if (FoundCtl != null)
                     return FoundCtl;
             }
-            return null;
+
+          return null;
+
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -31,13 +33,13 @@ namespace webapp
             int caseSwitch = SOURCE.User.getPrivilege();//  grab value from current loggedin user's privilege
             switch (caseSwitch)
             {
-                // case 1 = standard user (data-e ntry clerk) {checkEntry only}
+                // case 1 = standard user (data-entry clerk) {checkEntry only}
                 case 1:
                     {
-                       Menu menu = (Menu)WebForm1.FindControlRecursive(this.Master, "NavigationMenu");
-                       // Menu menu = (Menu)this.FindControl("NavigationMenu");
+                        Menu menu = (Menu)WebForm1.FindControlRecursive(this.Master, "NavigationMenu");
+                        // Menu menu = (Menu)this.FindControl("NavigationMenu");
                         MenuItemCollection menuItems = menu.Items;
-                        
+
 
                         for (int i = 0; i < menuItems.Count; i++)
                         {
@@ -47,7 +49,7 @@ namespace webapp
                                 i--;
                             }
                         }
-                        
+
                     }
                     break;
 
@@ -57,8 +59,7 @@ namespace webapp
                         Menu menu = (Menu)WebForm1.FindControlRecursive(this.Master, "NavigationMenu");
                         // Menu menu = (Menu)this.FindControl("NavigationMenu");
                         MenuItemCollection menuItems = menu.Items;
-                        
-                       
+
                         for (int i = 0; i < menuItems.Count; i++)
                         {
                             if (menuItems[i].Text == "Add User")
@@ -67,11 +68,11 @@ namespace webapp
                                 i--;
                             }
                         }
-                        
+
                     }
                     break;
                 case 3:
-                    
+                    Console.WriteLine("Default case");
                     break;
             }
             
@@ -80,12 +81,18 @@ namespace webapp
         protected void checkEntrySubmitButton_Click(object sender, EventArgs e)
         {
             String accountID = routingNoTextBox.Text + ':' + accountNoTextBox.Text;
+            DateTime now = DateTime.Now;
+            String checkDate = now.ToString();
+
+            string checkPaid = "0";
+            string letterNo = "0";
 
             //create or verify Account's existence
             bool success = SOURCE.Account.Insert(accountID, storeIDTextBox.Text, firstNameTextBox.Text, LastNameTextBox.Text, streetNameTextBox.Text, cityTextBox.Text, stateTextBox.Text, zipTextBox.Text);
             if (success)
             {
-                if (Check.Insert(accountID, checkValueTextBox.Text, checkNoTextBox.Text))
+                //(string accountID, string checkPaid, string checkValue, string checkNo, string letterNo, string checkDate)
+                if (Check.Insert(accountID, checkPaid, checkValueTextBox.Text, checkNoTextBox.Text, letterNo,checkDate))
                 {
                     //tell em it worked
                     string script = "alert('Submitted!');";

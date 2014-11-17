@@ -16,13 +16,60 @@ namespace webapp
         protected void Page_Load(object sender, EventArgs e)
         {
             QueryCheckNumber.Click += new EventHandler(this.QueryBtn_Click);
+            int caseSwitch = SOURCE.User.getPrivilege();//  grab value from current loggedin user's privilege
 
+            switch (caseSwitch)
+            {
+                // case 1 = standard user (data-entry clerk) {checkEntry only}
+                case 1:
+                    {
+                        Menu menu = (Menu)WebForm1.FindControlRecursive(this.Master, "NavigationMenu");
+                        // Menu menu = (Menu)this.FindControl("NavigationMenu");
+                        MenuItemCollection menuItems = menu.Items;
+
+
+                        for (int i = 0; i < menuItems.Count; i++)
+                        {
+                            if (menuItems[i].Text != "Enter Check")
+                            {
+                                menuItems.Remove(menuItems[i]);
+                                i--;
+                            }
+                        }
+
+                    }
+                    break;
+
+                // case 2 = local treasurer user (data-entry + data-retrieval + print letters) {removes Add User}
+                case 2:
+                    {
+                        Menu menu = (Menu)WebForm1.FindControlRecursive(this.Master, "NavigationMenu");
+                        // Menu menu = (Menu)this.FindControl("NavigationMenu");
+                        MenuItemCollection menuItems = menu.Items;
+
+                        for (int i = 0; i < menuItems.Count; i++)
+                        {
+                            if (menuItems[i].Text == "Add User")
+                            {
+                                menuItems.Remove(menuItems[i]);
+                                i--;
+                            }
+                        }
+
+                    }
+                    break;
+                case 3:
+
+                    break;
+            }
 
         }
 
         protected void QueryBtn_Click(Object sender, EventArgs e)
         {
-            DataSet ds = Check.Query("");
+            string checkNo = CheckNumber.Text;
+            
+            DataSet ds = Check.Query(checkNo);
 
             //bind the dataset to gridview
             if (ds.Tables.Count > 0)

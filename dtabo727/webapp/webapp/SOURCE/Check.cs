@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -84,20 +84,20 @@ namespace webapp.SOURCE
 
         //METHOD: Query
         //returns Dataset
-        public static DataSet Query(string WhereClause)
+        public static DataSet Query(string checkNo)
         {
             DataSet ds = new DataSet();
-
-            // Connect to the database and run the query.
-            OleDbConnection connection = new OleDbConnection(connectionString);
-            OleDbCommand cmd = new OleDbCommand("Select * From [Check] " + WhereClause, connection);
-            OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
-
-            // Fill the DataSet.
-            adapter.Fill(ds);
-            connection.Close();
-
-            return ds;
+            
+            
+                OleDbConnection connection = new OleDbConnection(connectionString);
+                OleDbCommand cmd = new OleDbCommand(@"Select * FROM [Check] WHERE ([Check Number] = @checkNo)", connection);
+                cmd.Parameters.AddWithValue("@checkNo", checkNo);
+                
+                connection.Open();
+                OleDbDataAdapter adapter = new OleDbDataAdapter(cmd); 
+                adapter.Fill(ds);
+                connection.Close();
+                return ds;
         }
 
     }

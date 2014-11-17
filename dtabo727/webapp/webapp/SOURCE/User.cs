@@ -5,6 +5,10 @@ using System.Web;
 using System.Data;
 using System.Data.OleDb;
 using System.Configuration;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using webapp.SOURCE;
+using webapp;
 
 namespace webapp.SOURCE
 {
@@ -14,6 +18,8 @@ namespace webapp.SOURCE
     {
         static String connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
 
+
+        
         //Method: Insert
         //returns true if succesfully inserted into database and false otherwise
         //number of columns must match number of values
@@ -137,7 +143,7 @@ namespace webapp.SOURCE
             }
         }
 
-        //METHOD: Privilege
+        //METHOD: getPrivilege
         //returns Int
         public static int getPrivilege()
         {
@@ -157,9 +163,12 @@ namespace webapp.SOURCE
             DataSet ds = new DataSet();
             adapter.Fill(ds);
 
-            int privilege = int.Parse(ds.Tables[0].Rows[0]["Privilege"].ToString());
+            int privilege = int.Parse(ds.Tables[0].Rows[0][7].ToString());
             connection.Close();
             return privilege;
         }
+        //METHOD: applyPrivilege
+        //returns Int
+        
     }
 }

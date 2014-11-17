@@ -33,7 +33,7 @@
     <br />
     <br />
     <asp:Label ID="Label3" runat="server" Text="Street:"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
     <asp:TextBox ID="streetNameTextBox" runat="server"></asp:TextBox>
                                  
                             <asp:RequiredFieldValidator ID="StreetRequired" runat="server" ControlToValidate="streetNameTextBox" 
@@ -41,7 +41,7 @@
                              ValidationGroup="CheckEntryValidationGroup">*</asp:RequiredFieldValidator>
     &nbsp;&nbsp;&nbsp;
     <asp:Label ID="Label4" runat="server" Text="City:"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:TextBox ID="cityTextBox" runat="server"></asp:TextBox>
                                  
                             <asp:RequiredFieldValidator ID="CityRequired" runat="server" ControlToValidate="cityTextBox" 
@@ -50,7 +50,7 @@
     &nbsp;&nbsp;&nbsp;<br />
     <br />
     <asp:Label ID="Label6" runat="server" Text="State:"></asp:Label>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
     <asp:TextBox ID="stateTextBox" runat="server"></asp:TextBox>
                                  
                             <asp:RequiredFieldValidator ID="StateRequired" runat="server" ControlToValidate="stateTextBox" 
