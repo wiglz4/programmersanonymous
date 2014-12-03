@@ -69,7 +69,6 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="printLetter.aspx" />
-    <Content Include="HTMLPage1.htm" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -87,6 +86,7 @@
     </Content>
     <Content Include="checkEntry.aspx" />
     <Content Include="checkQuery.aspx" />
+    <Content Include="printPreview.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -166,11 +166,20 @@
       <DependentUpon>checkQuery.aspx</DependentUpon>
     </Compile>
     <Compile Include="SOURCE\Company.cs" />
+    <Compile Include="SOURCE\Print.cs" />
     <Compile Include="SOURCE\Store.cs" />
     <Compile Include="SOURCE\User.cs" />
+    <Compile Include="printPreview.aspx.cs">
+      <DependentUpon>printPreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="printPreview.aspx.designer.cs">
+      <DependentUpon>printPreview.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ImageResources\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config">

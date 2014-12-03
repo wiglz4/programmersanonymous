@@ -167,8 +167,7 @@ namespace webapp.SOURCE
             connection.Close();
             return privilege;
         }
-        //METHOD: applyPrivilege
-        //returns Int
+        
         
     }
 }

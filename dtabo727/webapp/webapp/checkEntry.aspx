@@ -68,7 +68,7 @@
     <br />
     <br />
     <asp:Label ID="Label5" runat="server" TabIndex="48" Text="Check Value:"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:TextBox ID="checkValueTextBox" runat="server"></asp:TextBox>
                                  
                             <asp:RequiredFieldValidator ID="AmountRequired" runat="server" ControlToValidate="checkvalueTextBox" 
@@ -93,7 +93,7 @@
     <br />
     <br />
     <asp:Label ID="Label9" runat="server" Text="Check #"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:TextBox ID="checkNoTextBox" runat="server"></asp:TextBox>
                             
                             <asp:RequiredFieldValidator ID="CheckNoRequired" runat="server" ControlToValidate="checkNoTextBox" 
@@ -105,7 +105,7 @@
     <br />
 
     <asp:Label ID="Label10" runat="server" Text="Store ID:"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
     <asp:TextBox ID="storeIDTextBox" runat="server"></asp:TextBox>
 
 

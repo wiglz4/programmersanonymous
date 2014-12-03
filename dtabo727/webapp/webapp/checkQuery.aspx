@@ -16,7 +16,6 @@
     <asp:Button ID="QueryCheckNumber" Text="Retrieve Check" OnClick="QueryBtn_Click" runat="server"/>
   <p>
       &nbsp;</p>
-    <asp:PlaceHolder ID="PlaceHolder1" runat="server">Query results show here</asp:PlaceHolder>
     
     <asp:GridView ID="myGridView" autogeneratecolumns="true" 
         runat="server">

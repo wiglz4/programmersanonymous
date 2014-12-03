@@ -49,13 +49,13 @@ namespace webapp.Account {
         protected global::System.Web.UI.WebControls.Label LetterNumberLabel;
         
         /// <summary>
-        /// LetterNumber control.
+        /// LetterNumberDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox LetterNumber;
+        protected global::System.Web.UI.WebControls.DropDownList LetterNumberDropDownList;
         
         /// <summary>
         /// LetterNumberRequired control.
@@ -67,12 +67,12 @@ namespace webapp.Account {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator LetterNumberRequired;
         
         /// <summary>
-        /// SubmitCheckNumber control.
+        /// PrintButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SubmitCheckNumber;
+        protected global::System.Web.UI.WebControls.Button PrintButton;
     }
 }
