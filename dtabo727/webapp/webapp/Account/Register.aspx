@@ -4,14 +4,7 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <asp:CreateUserWizard ID="RegisterUser" runat="server" EnableViewState="false" OnCreatedUser="RegisterUser_CreatedUser">
-        <LayoutTemplate>
-            <asp:PlaceHolder ID="wizardStepPlaceholder" runat="server"></asp:PlaceHolder>
-            <asp:PlaceHolder ID="navigationPlaceholder" runat="server"></asp:PlaceHolder>
-        </LayoutTemplate>
-        <WizardSteps>
-            <asp:CreateUserWizardStep ID="RegisterUserWizardStep" runat="server">
-                <ContentTemplate>
+
                     <h2>
                         Create a New Account
                     </h2>
@@ -29,18 +22,26 @@
                     <div class="accountInfo">
                         <fieldset class="register">
                             <legend>Account Information</legend>
+                            
+                            <p>
+                                <asp:Label ID="FirstNameLabel" runat="server" AssociatedControlID="FirstName">First Name:</asp:Label>
+                                <asp:TextBox ID="FirstName" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="FirstNameRequired" runat="server" ControlToValidate="FirstName" 
+                                     CssClass="failureNotification" ErrorMessage="First Name is required." ToolTip="First Name is required." 
+                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                            </p>
+                                                        <p>
+                                <asp:Label ID="LastNameLabel" runat="server" AssociatedControlID="LastName">Last Name:</asp:Label>
+                                <asp:TextBox ID="LastName" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="LastName" 
+                                     CssClass="failureNotification" ErrorMessage="Last Name is required." ToolTip="Last Name is required." 
+                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                            </p>
                             <p>
                                 <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name:</asp:Label>
                                 <asp:TextBox ID="UserName" runat="server" CssClass="textEntry"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" 
                                      CssClass="failureNotification" ErrorMessage="User Name is required." ToolTip="User Name is required." 
-                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
-                            </p>
-                            <p>
-                                <asp:Label ID="EmailLabel" runat="server" AssociatedControlID="Email">E-mail:</asp:Label>
-                                <asp:TextBox ID="Email" runat="server" CssClass="textEntry"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="Email" 
-                                     CssClass="failureNotification" ErrorMessage="E-mail is required." ToolTip="E-mail is required." 
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
                             </p>
                             <p>
@@ -60,20 +61,24 @@
                                      CssClass="failureNotification" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match."
                                      ValidationGroup="RegisterUserValidationGroup">*</asp:CompareValidator>
                             </p>
+                            <p>
+                                <asp:Label ID="StoreIDLabel" runat="server" AssociatedControlID="StoreID">Store ID:</asp:Label>
+                                <asp:TextBox ID="StoreID" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="StoreID" 
+                                     CssClass="failureNotification" ErrorMessage="Store ID is required." ToolTip="Store ID is required." 
+                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                            </p>
+                            <p>
+                                <asp:Label ID="CompIDLabel" runat="server" AssociatedControlID="CompID">Company ID:</asp:Label>
+                                <asp:TextBox ID="CompID" runat="server" CssClass="textEntry"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="CompID" 
+                                     CssClass="failureNotification" ErrorMessage="Company ID is required." ToolTip="Company ID is required." 
+                                     ValidationGroup="RegisterUserValidationGroup">*</asp:RequiredFieldValidator>
+                            </p>
+
                             
                             <p class="submitButton">
-                        <asp:Button ID="CreateUserButton" runat="server" CommandName="MoveNext" 
-                            Text="Create User" ValidationGroup="RegisterUserValidationGroup" />
+                        <asp:Button ID="CreateUserButton" runat="server" Text="Create User" ValidationGroup="RegisterUserValidationGroup" />
                             </p>
                         </fieldset></div>
-                    </fieldset>
-                    
-                    </div>
-                </ContentTemplate>
-                <CustomNavigationTemplate>
-                </CustomNavigationTemplate>
-            </asp:CreateUserWizardStep>
-          <asp:CompleteWizardStep runat="server"></asp:CompleteWizardStep>
-        </WizardSteps>
-    </asp:CreateUserWizard>
 </asp:Content>

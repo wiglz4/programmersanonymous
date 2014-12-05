@@ -17,6 +17,7 @@ namespace webapp.SOURCE
         static String connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
         
         
+        //modify to do a specifi query
         public static bool genLetter(string checkNo, int letterNo)
         {
             DataSet ds = new DataSet();

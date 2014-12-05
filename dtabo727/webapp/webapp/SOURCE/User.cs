@@ -24,12 +24,12 @@ namespace webapp.SOURCE
         //returns true if succesfully inserted into database and false otherwise
         //number of columns must match number of values
         //columns and values formatted as "col1,col2,col3" "val1,val2,val3"
-        public static bool Insert(string userID, string storeID, string compID, string fName, string lName, string uName, string pass, int priv)
+        public static bool Insert(string storeID, string compID, string fName, string lName, string uName, string pass, int priv)
         {
             try
             {
                 OleDbConnection connection = new OleDbConnection(connectionString);
-                OleDbCommand cmd = new OleDbCommand(@"Insert Into [User]([Store ID], [Company ID], [First Name], [Last Name], [Username], [Password], [Privilege]) 
+                OleDbCommand cmd = new OleDbCommand(@"Insert Into [User]([Store ID], [Company ID], [First Name], [Last Name], [Username], [Password], [Privelege]) 
                     Values (@StoreIDParam, @CompanyIDParam, @FNameParam, @LNameParam, @UsernameParam, @PasswordParam, @PrivilegeParam)", connection);
                 cmd.Parameters.AddWithValue("@StoreIDParam", storeID);
                 cmd.Parameters.AddWithValue("@CompanyIDParam", compID);

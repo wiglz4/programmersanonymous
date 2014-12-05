@@ -13,19 +13,32 @@ namespace webapp.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
+            //RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
+            CreateUserButton.Click += new EventHandler(this.RegisterUser_CreatedUser);
         }
 
         protected void RegisterUser_CreatedUser(object sender, EventArgs e)
         {
-            FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
+            string script;
 
-            string continueUrl = RegisterUser.ContinueDestinationPageUrl;
-            if (String.IsNullOrEmpty(continueUrl))
+            TextBox StoreID = (TextBox)webapp.WebForm1.FindControlRecursive(this.Master, "StoreID");
+            TextBox FirstName = (TextBox)webapp.WebForm1.FindControlRecursive(this.Master, "FirstName");
+            TextBox LastName = (TextBox)webapp.WebForm1.FindControlRecursive(this.Master, "LastName");
+            TextBox UserName = (TextBox)webapp.WebForm1.FindControlRecursive(this.Master, "UserName");
+            TextBox Password = (TextBox)webapp.WebForm1.FindControlRecursive(this.Master, "Password");
+            TextBox CompID = (TextBox)webapp.WebForm1.FindControlRecursive(this.Master, "CompID");
+
+            if (webapp.SOURCE.User.Insert(StoreID.Text, CompID.Text, FirstName.Text, LastName.Text, UserName.Text, Password.Text, 2))
             {
-                continueUrl = "~/";
+                //YAY!!!
+                script = "alert('Successfully added " + FirstName.Text + " " + LastName.Text + ".');";
             }
-            Response.Redirect(continueUrl);
+            else
+            {
+                script = "alert('Invalid data. Please modify data and try again.');";
+                //BOOM
+            }
+            System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "", script, true);
         }
 
     }
