@@ -3,7 +3,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-   <span class="failureNotification">
+    <span class="failureNotification">
                 <asp:Literal ID="FailureText" runat="server"></asp:Literal>
             </span>
             <asp:ValidationSummary ID="CheckEntryValidationSummary" runat="server" CssClass="failureNotification" 
@@ -57,7 +57,7 @@
                              CssClass="failureNotification" ErrorMessage="State is required." 
                              ValidationGroup="CheckEntryValidationGroup">*</asp:RequiredFieldValidator>
     &nbsp;&nbsp;&nbsp;
-    Zip Code:&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+    Zip Code:&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
     <asp:TextBox ID="zipTextBox" runat="server"></asp:TextBox>
                                  
                             <asp:RequiredFieldValidator ID="ZipRequired" runat="server" ControlToValidate="zipTextBox" 

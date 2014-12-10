@@ -147,9 +147,26 @@ namespace webapp.SOURCE
         //returns Int
         public static int getPrivilege()
         {
-            string uName = HttpContext.Current.Session["uName"].ToString();
-            string pWord = HttpContext.Current.Session["pWord"].ToString();
-            string cID = HttpContext.Current.Session["cID"].ToString();
+            string uName = "";
+                string pWord = "";
+                string cID = "";
+            try
+            {
+
+                uName = HttpContext.Current.Session["uName"].ToString();
+                pWord = HttpContext.Current.Session["pWord"].ToString();
+                cID = HttpContext.Current.Session["cID"].ToString();
+
+            }
+                // ctches a bad login (between two server instances and will redirect to force login)
+            catch (Exception e)
+            {
+                if (e.Message == "Object reference not set to an instance of an object.")
+                {
+                    System.Web.Security.FormsAuthentication.SignOut();
+                    HttpContext.Current.Response.Redirect("~/Account/login.aspx", true);
+                }
+            }
 
             // Connect to the database and run the query.
             OleDbConnection connection = new OleDbConnection(connectionString);

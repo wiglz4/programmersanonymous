@@ -1,0 +1,127 @@
+
+
+
+ /// <summary>
+ /// StartPage
+ /// </summary>
+ /// <summary>
+ /// StartPage
+ /// </summary>
+ private void StartPage()
+ {
+	mStreamID    = objectID++;
+	mStreamLenID = objectID++;
+
+	StartObject(mStreamID);
+
+	//String Length
+	string strLength = string.Format("<< /Length {0} 0 R >>\r\n",mStreamLenID);
+	FileStreamWrite(outFileStream,strLength);
+
+	//String Stream
+	string strStream = "stream\r\n";
+	FileStreamWrite(outFileStream,strStream);
+				
+	mStreamStart = outFileStream.Length;
+
+	//String BT
+	string strBT = string.Format("BT\r\n/F0 {0} Tf\r\n",this.fontSize.ToString("G")); 
+	FileStreamWrite(outFileStream,strBT);
+
+	//Calculate yPos
+	yPos = this.pageDepth - this.margin;
+
+	//String Td
+	string strTd = string.Format("{0} {1} Td\r\n", this.margin.ToString("G"), yPos.ToString("G"));
+	FileStreamWrite(outFileStream,strTd);
+
+	//String TL
+	string strTL = string.Format("{0} TL\r\n",leadSize.ToString("G")); 
+	FileStreamWrite(outFileStream,strTL);
+ }
+
+
+1
+
+
+ /// <summary>
+ /// StartObject
+ /// </summary>
+ /// <param name="id">int</param>
+ private void StartObject(int id)
+ {
+	if(id >= numXrefs)
+	{
+		long new_xrefs = 0;
+		int delta, new_num_xrefs;
+		delta = numXrefs / 5;
+						
+		if(delta < 1000)
+		delta += 1000;
+
+		new_num_xrefs = numXrefs + delta;
+
+		new_xrefs = (long)new_num_xrefs * (new_xrefs+8);
+
+		if(new_xrefs == 0) 
+		{
+			string stderr = string.Format("Unable to allocate array for object {0}.",id);
+			FileStreamWrite(outFileStream,stderr);
+		}
+		else
+		{
+			pXrefs   = new_xrefs;
+			numXrefs = new_num_xrefs;
+		}
+	}
+
+	pXrefs = outFileStream.Length;
+
+	//String objId
+	string strobjId = string.Format("{0} 0 obj\r\n", id);
+	FileStreamWrite(outFileStream,strobjId);
+
+ }
+
+1
+
+
+ // StorePage
+ /// </summary>
+ /// <param name="id">int</param>
+ public void StorePage(int id)
+ {
+	PdfPage pp = new PdfPage();
+				
+	long n = pp.GetNextId();
+				
+	if(n == 0)
+	{
+		string stderr = string.Format("Unable to allocate array for page {0}.",this.numPages+1);
+		FileStreamWrite(outFileStream,stderr);
+	}
+
+	pp.pageId = id;
+				
+	pInsertPage  = this.numPages*3 + 1;
+	this.numPages++;
+
+ }
+	
+
+ /// <summary>
+ //// <summary>
+ /// FileStreamWrite
+ /// </summary>
+ /// <param name="outFileStream">FileStream</param>
+ /// <param name="str1">string</param>
+ private void FileStreamWrite(FileStream outFileStream,string str1)
+ {
+	Byte[] buffer=null;
+	buffer=ASCIIEncoding.ASCII.GetBytes(str1);
+	outFileStream.Write(buffer,0,buffer.Length);
+
+ }
+	
+
+ 

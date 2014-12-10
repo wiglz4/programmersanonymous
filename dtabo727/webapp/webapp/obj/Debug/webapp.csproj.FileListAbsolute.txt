@@ -8,3 +8,7 @@ M:\Documents\Documents\Schoolwork\College\05 Final Year\CpS420\_PROJECT\programm
 M:\Documents\Documents\Schoolwork\College\05 Final Year\CpS420\_PROJECT\programmersanonymous\dtabo727\webapp\webapp\obj\Debug\webapp.csprojResolveAssemblyReference.cache
 M:\Documents\Documents\Schoolwork\College\05 Final Year\CpS420\_PROJECT\programmersanonymous\dtabo727\webapp\webapp\obj\Debug\webapp.dll
 M:\Documents\Documents\Schoolwork\College\05 Final Year\CpS420\_PROJECT\programmersanonymous\dtabo727\webapp\webapp\obj\Debug\webapp.pdb
+E:\seniorFall\CpsDevelopment\storageDriveGit\programmersanonymous\dtabo727\webapp\webapp\bin\itextsharp.dll
+E:\seniorFall\CpsDevelopment\storageDriveGit\programmersanonymous\dtabo727\webapp\webapp\bin\itextsharp.pdfa.dll
+E:\seniorFall\CpsDevelopment\storageDriveGit\programmersanonymous\dtabo727\webapp\webapp\bin\itextsharp.xtra.dll
+E:\seniorFall\CpsDevelopment\storageDriveGit\programmersanonymous\dtabo727\webapp\webapp\bin\itextsharp.xml

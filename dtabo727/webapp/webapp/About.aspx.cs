@@ -13,5 +13,16 @@ namespace webapp
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            //bool success = SOURCE.Print.batchPrintLetter("1234","3");
+            //if (success)
+
+            //{
+            //    string script = "alert('Success!');";
+            //    System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "", script, true);
+            //}
+        }
     }
 }

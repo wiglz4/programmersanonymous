@@ -142,6 +142,22 @@ namespace webapp.SOURCE
                 return ds;
         }
 
+        public static DataSet letterQuery(int letterNo)
+        {
+            DataSet ds = new DataSet();
+
+
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand cmd = new OleDbCommand(@"Select * FROM [Check] WHERE ([Letter Sent Number] = @letterNo)", connection);
+            cmd.Parameters.AddWithValue("@letterNo", letterNo);
+
+            connection.Open();
+            OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
+            adapter.Fill(ds);
+            connection.Close();
+            return ds;
+        }
+
         public static DataSet Query(string checkNo)
         {
             DataSet ds = new DataSet();

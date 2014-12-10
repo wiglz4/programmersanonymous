@@ -13,6 +13,8 @@ namespace webapp
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        //apply permissions by showing or hiding menu items based on user permission level
+        //http://www.blackbeltcoder.com/Articles/asp/recursively-finding-controls (http://www.blackbeltcoder.com/Legal/Licenses/CPOL)
         public static Control FindControlRecursive(Control Root, string Id)
         {
             if (Root.ID == Id)
@@ -53,26 +55,11 @@ namespace webapp
                     }
                     break;
 
-                // case 2 = local treasurer user (data-entry + data-retrieval + print letters) {removes Add User}
+                // case 2 = local treasurer user (data-entry + data-retrieval + print letters + add Level 1 users [clerks]) {plans changed - no controls will be removed now.}
                 case 2:
-                    {
-                        Menu menu = (Menu)WebForm1.FindControlRecursive(this.Master, "NavigationMenu");
-                        // Menu menu = (Menu)this.FindControl("NavigationMenu");
-                        MenuItemCollection menuItems = menu.Items;
-
-                        for (int i = 0; i < menuItems.Count; i++)
-                        {
-                            if (menuItems[i].Text == "Add User")
-                            {
-                                menuItems.Remove(menuItems[i]);
-                                i--;
-                            }
-                        }
-
-                    }
                     break;
+                // case 3 = backend admin - no restrictions
                 case 3:
-                    Console.WriteLine("Default case");
                     break;
             }
             

@@ -51,7 +51,7 @@
                       
                         <asp:MenuItem NavigateUrl="~/checkEntry.aspx" Text="Enter Check"/>
                         <asp:MenuItem NavigateUrl="~/checkQuery.aspx" Text="Query Check"/>
-                        <asp:MenuItem NavigateUrl="~/printLetter.aspx" Text="Print Letter"/>
+                        <asp:MenuItem NavigateUrl="~/batchPrintLetter.aspx" Text="Print Letter"/>
                         <asp:MenuItem NavigateUrl="~/Account/Register.aspx" Text="Add User"/>
 
                     </Items>

@@ -13,33 +13,6 @@ namespace webapp.Account {
     public partial class WebForm1 {
         
         /// <summary>
-        /// CheckNumberLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CheckNumberLabel;
-        
-        /// <summary>
-        /// CheckNumber control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CheckNumber;
-        
-        /// <summary>
-        /// CheckNumberRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator CheckNumberRequired;
-        
-        /// <summary>
         /// LetterNumberLabel control.
         /// </summary>
         /// <remarks>
@@ -74,5 +47,14 @@ namespace webapp.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button PrintButton;
+        
+        /// <summary>
+        /// viewPDF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button viewPDF;
     }
 }
