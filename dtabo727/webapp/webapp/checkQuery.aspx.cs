@@ -76,15 +76,50 @@ namespace webapp
 
         protected void QueryBtn_Click(Object sender, EventArgs e)
         {
-            string checkNo = CheckNumber.Text;
-            
-            DataSet ds = Check.Query(checkNo);
+            string value = CheckNumber.Text;
+            string parameter = QueryBy.Text;
+            DataSet ds = null;
+
+            switch (parameter)
+            {
+                case "1":
+                    ds = Check.Query(value, "Check.[Account ID]");
+                    break;
+                case "2":
+                    ds = Check.Query(value, "Check.[Check Number]");
+                    break;
+                case "3":
+                    ds = Check.DateQuery(value + " 12:00:00 AM", "Check.[Check Date]", value + " 11:59:59 PM");
+                    break;
+                case "4":
+                    ds = Check.Query(value, "Account.[Store ID]");
+                    break;
+                case "5":
+                    ds = Check.Query(value, "Check.[Letter Sent Number]");
+                    break;
+                case "6":
+                    ds = Check.Query(value, "Account.[First Name]");
+                    break;
+                case "7":
+                    ds = Check.Query(value, "Account.[Last Name]");
+                    break;
+                case "0":
+                    ds = Check.QueryAll();
+                    break;
+                default:
+                    break;
+            }
 
             //bind the dataset to gridview
-            if (ds.Tables.Count > 0)
+            if (ds != null && ds.Tables.Count > 0)
             {
                 myGridView.DataSource = ds;
                 myGridView.DataBind();
+            }
+            else if (ds == null)
+            {
+                string script = "alert('Invalid Query Data. Please correctly format data and try again.');";
+                System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "", script, true);
             }
         }
 
@@ -100,16 +135,16 @@ namespace webapp
 
             Label4.Visible = true;
             AmtDue.Visible = true;
-            AmtDue.Text = GridView2.Rows[0].Cells[2].Text; 
+            AmtDue.Text = GridView2.Rows[0].Cells[2].Text;
 
             Label5.Visible = true;
             CheckNo.Visible = true;
-            CheckNo.Text = GridView2.Rows[0].Cells[3].Text; 
-            
+            CheckNo.Text = GridView2.Rows[0].Cells[3].Text;
+
             Label6.Visible = true;
             LetterNo.Visible = true;
             LetterNo.Text = GridView2.Rows[0].Cells[4].Text;
-            
+
             Label7.Visible = true;
             CheckDate.Visible = true;
             CheckDate.Text = GridView2.Rows[0].Cells[5].Text;
@@ -212,7 +247,7 @@ namespace webapp
 
         void myGridView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             GridViewRow row = myGridView.SelectedRow;
             string accountID = row.Cells[0].Text;
             string checkPaid = row.Cells[1].Text;

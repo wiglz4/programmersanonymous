@@ -48,7 +48,7 @@ namespace webapp.SOURCE
                     //somethin blew up
                     return false;
                 }
-            }  
+            }
 
         }
 
@@ -123,23 +123,23 @@ namespace webapp.SOURCE
         public static DataSet SpecificQuery(string accountID, string checkPaid, string checkValue, string checkNo, string letterNo, string checkDate)
         {
             DataSet ds = new DataSet();
-            
-            
-                OleDbConnection connection = new OleDbConnection(connectionString);
-                OleDbCommand cmd = new OleDbCommand(@"Select * FROM [Check] Where ([Account ID] = @AccountIDParam AND [Amount Paid] = @AmountPaidParam AND [Amount Due] = @AmountDueParam 
+
+
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand cmd = new OleDbCommand(@"Select * FROM [Check] Where ([Account ID] = @AccountIDParam AND [Amount Paid] = @AmountPaidParam AND [Amount Due] = @AmountDueParam 
                 AND [Check Number] = @CheckNoParam AND [Letter Sent Number] = @LetterNoParam AND [Check Date] = @CheckDateParam)", connection);
-                cmd.Parameters.AddWithValue("@AccountIDParam", accountID);
-                cmd.Parameters.AddWithValue("@AmountPaidParam", checkPaid);
-                cmd.Parameters.AddWithValue("@AmountDueParam", checkValue);
-                cmd.Parameters.AddWithValue("@CheckNoParam", checkNo);
-                cmd.Parameters.AddWithValue("@LetterNoParam", letterNo);
-                cmd.Parameters.AddWithValue("@CheckDateParam", checkDate);
-                
-                connection.Open();
-                OleDbDataAdapter adapter = new OleDbDataAdapter(cmd); 
-                adapter.Fill(ds);
-                connection.Close();
-                return ds;
+            cmd.Parameters.AddWithValue("@AccountIDParam", accountID);
+            cmd.Parameters.AddWithValue("@AmountPaidParam", checkPaid);
+            cmd.Parameters.AddWithValue("@AmountDueParam", checkValue);
+            cmd.Parameters.AddWithValue("@CheckNoParam", checkNo);
+            cmd.Parameters.AddWithValue("@LetterNoParam", letterNo);
+            cmd.Parameters.AddWithValue("@CheckDateParam", checkDate);
+
+            connection.Open();
+            OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
+            adapter.Fill(ds);
+            connection.Close();
+            return ds;
         }
 
         public static DataSet letterQuery(int letterNo)
@@ -158,14 +158,58 @@ namespace webapp.SOURCE
             return ds;
         }
 
-        public static DataSet Query(string checkNo)
+        public static DataSet Query(string value, string parameter)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                OleDbConnection connection = new OleDbConnection(connectionString);
+                OleDbCommand cmd = new OleDbCommand(@"Select Check.[Account ID] AS 'Account ID', [Amount Paid], [Amount Due], [Check Number], [Letter Sent Number], [Check Date], [Store ID], [First Name], [Last Name] FROM [Check] INNER JOIN [Account] ON Check.[Account ID] = Account.[Account ID] WHERE (" + parameter + " = @valueParam)", connection);
+                cmd.Parameters.AddWithValue("@valueParam", value);
+
+                connection.Open();
+                OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
+                adapter.Fill(ds);
+                connection.Close();
+                return ds;
+            }
+            catch (Exception e)
+            {
+                ds = null;
+                return ds;
+            }
+        }
+
+        public static DataSet DateQuery(string value, string parameter, string value2)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                OleDbConnection connection = new OleDbConnection(connectionString);
+                OleDbCommand cmd = new OleDbCommand(@"Select Check.[Account ID] AS 'Account ID', [Amount Paid], [Amount Due], [Check Number], [Letter Sent Number], [Check Date], [Store ID], [First Name], [Last Name] FROM [Check] INNER JOIN [Account] ON Check.[Account ID] = Account.[Account ID] WHERE (" + parameter + " BETWEEN @valueParam AND @valueParam2)", connection);
+                cmd.Parameters.AddWithValue("@valueParam", value);
+                cmd.Parameters.AddWithValue("@valueParam2", value2);
+
+                connection.Open();
+                OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
+                adapter.Fill(ds);
+                connection.Close();
+                return ds;
+            }
+            catch (Exception e)
+            {
+                ds = null;
+                return ds;
+            }
+        }
+
+        public static DataSet QueryAll()
         {
             DataSet ds = new DataSet();
 
 
             OleDbConnection connection = new OleDbConnection(connectionString);
-            OleDbCommand cmd = new OleDbCommand(@"Select * FROM [Check] WHERE ([Check Number] = @checkNo)", connection);
-            cmd.Parameters.AddWithValue("@checkNo", checkNo);
+            OleDbCommand cmd = new OleDbCommand(@"Select Check.[Account ID] AS 'Account ID', [Amount Paid], [Amount Due], [Check Number], [Letter Sent Number], [Check Date], [Store ID], [First Name], [Last Name] FROM [Check] INNER JOIN [Account] ON Check.[Account ID] = Account.[Account ID]", connection);
 
             connection.Open();
             OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);

@@ -51,7 +51,17 @@
 
      <!--hidden panel pops up when check is selected -->
 
-   <asp:Label ID="CheckNumberLabel" runat="server" AssociatedControlID="CheckNumber">Check Number:</asp:Label>
+   <asp:Label ID="CheckNumberLabel" runat="server" AssociatedControlID="CheckNumber">Query By:</asp:Label>
+    <asp:DropDownList ID="QueryBy" runat="server" Width="100px">
+                <asp:ListItem Text="All Checks" Value="0"></asp:ListItem>
+                <asp:ListItem Text="Account ID" Value="1"></asp:ListItem>
+                <asp:ListItem Text="Check No." Value="2"></asp:ListItem>
+                <asp:ListItem Text="Date mm/dd/yyyy" Value="3"></asp:ListItem>
+                <asp:ListItem Text="Store" Value="4"></asp:ListItem>
+                <asp:ListItem Text="Letter Sent" Value="5"></asp:ListItem>
+                <asp:ListItem Text="First Name" Value="6"></asp:ListItem>
+                <asp:ListItem Text="Last Name" Value="7"></asp:ListItem>
+            </asp:DropDownList>
    <asp:TextBox ID="CheckNumber" runat="server" CssClass="textEntry"></asp:TextBox>
    <asp:RequiredFieldValidator ID="CheckNumberRequired" runat="server" ControlToValidate="CheckNumber" 
         CssClass="failureNotification" ErrorMessage="Check Number is required." ToolTip="Check Number is required." 
