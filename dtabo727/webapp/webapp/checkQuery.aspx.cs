@@ -80,6 +80,15 @@ namespace webapp
             string parameter = QueryBy.Text;
             DataSet ds = null;
 
+            if (value.Length.Equals(0))
+            {
+                if (parameter != "0")
+                {
+                    string script = "alert('Invalid Query Data. Please enter a value and try again or elect to view all checks.');";
+                    System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "", script, true);
+                }
+            }
+
             switch (parameter)
             {
                 case "1":
