@@ -98,7 +98,7 @@ namespace webapp
             }
             catch
             {
-                string script = "alert('Account Number should contain numerals only.');";
+                string script = "alert('Check Number should contain numerals only.');";
                 System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "", script, true);
                 return;
             }
