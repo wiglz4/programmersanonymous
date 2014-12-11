@@ -67,7 +67,32 @@ namespace webapp
 
         protected void checkEntrySubmitButton_Click(object sender, EventArgs e)
         {
-            String accountID = routingNoTextBox.Text + ':' + accountNoTextBox.Text;
+            int routingNo;
+            int accountNo;
+
+            try
+            {
+                routingNo = int.Parse(routingNoTextBox.Text);
+            }
+            catch
+            {
+                string script = "alert('Routing Number should contain numerals only.');";
+                System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "", script, true);
+                return;
+            }
+
+            try
+            {
+                accountNo = int.Parse(accountNoTextBox.Text);
+            }
+            catch
+            {
+                string script = "alert('Account Number should contain numerals only.');";
+                System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "", script, true);
+                return;
+            }
+            
+            int accountID = routingNo+ ':' + accountNo;
             DateTime now = DateTime.Now;
             String checkDate = now.ToString();
 
@@ -75,11 +100,11 @@ namespace webapp
             string letterNo = "0";
 
             //create or verify Account's existence
-            bool success = SOURCE.Account.Insert(accountID, storeIDTextBox.Text, firstNameTextBox.Text, LastNameTextBox.Text, streetNameTextBox.Text, cityTextBox.Text, stateTextBox.Text, zipTextBox.Text);
+            bool success = SOURCE.Account.Insert((accountID.ToString()), storeIDTextBox.Text, firstNameTextBox.Text, LastNameTextBox.Text, streetNameTextBox.Text, cityTextBox.Text, stateTextBox.Text, zipTextBox.Text);
             if (success)
             {
                 //(string accountID, string checkPaid, string checkValue, string checkNo, string letterNo, string checkDate)
-                if (Check.Insert(accountID, checkPaid, checkValueTextBox.Text, checkNoTextBox.Text, letterNo,checkDate))
+                if (Check.Insert((accountID.ToString()), checkPaid, checkValueTextBox.Text, checkNoTextBox.Text, letterNo, checkDate))
                 {
                     //tell em it worked
                     string script = "alert('Submitted!');";
