@@ -124,17 +124,17 @@ namespace webapp.SOURCE
         {
             string filepath = HttpContext.Current.Server.MapPath("~/App_Data/singlePDFs/" + fileNumber + ".pdf");
 
-            int amtDueInt = Convert.ToInt32(amtDue);
+            decimal amtDueDec = Decimal.Parse(amtDue);
             Paragraph paragraph = new Paragraph("");
             int bankFee = 30;
             int stateFee = 30;
-            int fullTotal = amtDueInt + bankFee + stateFee;
+            int fullTotal = ((int)amtDueDec) + bankFee + stateFee;
             
             switch (letterNo)
             {
                 case 0:
                 {
-                    paragraph = new Paragraph("Dear Sir or Madam, \n \n Your check number '" + checkNo + "' from account '"+ acctID +"' in the amount of $" + amtDueInt + ", dated " + checkDate + ",  has been returned by the bank. \n \n We have verified with your bank that there are insufficient funds to pay the check. \n Please replace this check with cash or a money order and pay the required state fee of $30 for a \n total of $" + (amtDueInt + stateFee) + " within 14 days per South Carolina Law to avoid further collection action. \n \n Since this is your first notice, the bank fee will be waived if payment is recieved within 14 days. \n If you have questions about this, please contact the Bounce House Check Collection office at 864-555-5555 between the hours of 9 and 5. \n Sincerely, \n \n David Tabor - Bounce House Collection Agency");
+                    paragraph = new Paragraph("Dear Sir or Madam, \n \n Your check number '" + checkNo + "' from account '"+ acctID +"' in the amount of $" + amtDueDec + ", dated " + checkDate + ",  has been returned by the bank. \n \n We have verified with your bank that there are insufficient funds to pay the check. \n Please replace this check with cash or a money order and pay the required state fee of $30 for a \n total of $" + (amtDueDec + stateFee) + " within 14 days per South Carolina Law to avoid further collection action. \n \n Since this is your first notice, the bank fee will be waived if payment is recieved within 14 days. \n If you have questions about this, please contact the Bounce House Check Collection office at 864-555-5555 between the hours of 9 and 5. \n Sincerely, \n \n David Tabor - Bounce House Collection Agency");
                     Document doc = new Document(iTextSharp.text.PageSize.LETTER);
                     PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(filepath, FileMode.Create));
                     doc.Open();
@@ -144,7 +144,7 @@ namespace webapp.SOURCE
                 }
                 case 1:
                 {
-                    paragraph = new Paragraph("Dear Sir or Madam, \n \n Your check number '" + checkNo + "' from account '" + acctID + "' in the amount of $" + amtDueInt + ", dated " + checkDate + ",  has been returned by the bank. \n We have verified with your bank that there are insufficient funds to pay the check. \n This is your second notice. Please replace this check with cash or a money order, pay the bank charge of $30, and pay the state fee of $30 for a total of " + fullTotal + " within 10 days per South Carolina Law to avoid further collection action. \n \n If you have questions about this, please contact the Bounce House Check Collection office at 864-555-5555 between the hours of 9 and 5. \n Sincerely, \n \n David Tabor - Bounce House Collection Agency");
+                    paragraph = new Paragraph("Dear Sir or Madam, \n \n Your check number '" + checkNo + "' from account '" + acctID + "' in the amount of $" + amtDueDec + ", dated " + checkDate + ",  has been returned by the bank. \n We have verified with your bank that there are insufficient funds to pay the check. \n This is your second notice. Please replace this check with cash or a money order, pay the bank charge of $30, and pay the state fee of $30 for a total of " + fullTotal + " within 10 days per South Carolina Law to avoid further collection action. \n \n If you have questions about this, please contact the Bounce House Check Collection office at 864-555-5555 between the hours of 9 and 5. \n Sincerely, \n \n David Tabor - Bounce House Collection Agency");
                     Document doc = new Document(iTextSharp.text.PageSize.LETTER);
                     PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(filepath, FileMode.Create));
                     doc.Open();
@@ -154,7 +154,7 @@ namespace webapp.SOURCE
                 }
                 case 2:
                 {
-                    paragraph = new Paragraph("Dear Sir or Madam, \n \n Your check number '" + checkNo + "' from account '" + acctID + "' in the amount of $" + amtDueInt + ", dated " + checkDate + ",  has been returned by the bank. \n We have verified with your bank that there are insufficient funds to pay the check. \n This is your third notice. Please replace this check with cash or a money order, pay the bank charge of $30, and pay the state fee of $30 for a total of " + fullTotal + " within 10 days per South Carolina Law to avoid further collection action. \n \n If payment is not recieved within 14 days legal action will be taken to the full measure of the law. \n If you have questions about this, please contact the Bounce House Check Collection office at 864-555-5555 between the hours of 9 and 5. \n Sincerely, \n \n David Tabor - Bounce House Collection Agency");
+                    paragraph = new Paragraph("Dear Sir or Madam, \n \n Your check number '" + checkNo + "' from account '" + acctID + "' in the amount of $" + amtDueDec + ", dated " + checkDate + ",  has been returned by the bank. \n We have verified with your bank that there are insufficient funds to pay the check. \n This is your third notice. Please replace this check with cash or a money order, pay the bank charge of $30, and pay the state fee of $30 for a total of " + fullTotal + " within 10 days per South Carolina Law to avoid further collection action. \n \n If payment is not recieved within 14 days legal action will be taken to the full measure of the law. \n If you have questions about this, please contact the Bounce House Check Collection office at 864-555-5555 between the hours of 9 and 5. \n Sincerely, \n \n David Tabor - Bounce House Collection Agency");
                     Document doc = new Document(iTextSharp.text.PageSize.LETTER);
                     PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(filepath, FileMode.Create));
                     doc.Open();
