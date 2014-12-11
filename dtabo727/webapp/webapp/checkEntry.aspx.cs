@@ -69,7 +69,7 @@ namespace webapp
         {
             int routingNo;
             int accountNo;
-
+            int checkNo;
             try
             {
                 routingNo = int.Parse(routingNoTextBox.Text);
@@ -91,6 +91,17 @@ namespace webapp
                 System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "", script, true);
                 return;
             }
+
+            try
+            {
+                checkNo = int.Parse(checkNoTextBox.Text);
+            }
+            catch
+            {
+                string script = "alert('Account Number should contain numerals only.');";
+                System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "", script, true);
+                return;
+            }
             
             int accountID = routingNo+ ':' + accountNo;
             DateTime now = DateTime.Now;
@@ -104,7 +115,7 @@ namespace webapp
             if (success)
             {
                 //(string accountID, string checkPaid, string checkValue, string checkNo, string letterNo, string checkDate)
-                if (Check.Insert((accountID.ToString()), checkPaid, checkValueTextBox.Text, checkNoTextBox.Text, letterNo, checkDate))
+                if (Check.Insert((accountID.ToString()), checkPaid, checkValueTextBox.Text, (checkNo.ToString()), letterNo, checkDate))
                 {
                     //tell em it worked
                     string script = "alert('Submitted!');";
