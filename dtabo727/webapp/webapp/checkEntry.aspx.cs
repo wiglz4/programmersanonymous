@@ -84,6 +84,18 @@ namespace webapp
                     //tell em it worked
                     string script = "alert('Submitted!');";
                     System.Web.UI.ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "", script, true);
+
+                    firstNameTextBox.Text = "";
+                    LastNameTextBox.Text = "";
+                    streetNameTextBox.Text = "";
+                    cityTextBox.Text = "";
+                    stateTextBox.Text = "";
+                    zipTextBox.Text = "";
+                    checkValueTextBox.Text = "";
+                    routingNoTextBox.Text = "";
+                    accountNoTextBox.Text = "";
+                    checkNoTextBox.Text = "";
+                    storeIDTextBox.Text = "";
                 }
                 else
                 {

@@ -144,7 +144,7 @@ namespace webapp.SOURCE
                 }
                 case 1:
                 {
-                    paragraph = new Paragraph("Dear Sir or Madam, \n \n Your check number " + checkNo + "' from account '" + acctID + "' in the amount of $" + amtDueInt + ", dated " + checkDate + ",  has been returned by the bank. \n We have verified with your bank that there are insufficient funds to pay the check. \n This is your second notice. Please replace this check with cash or a money order, pay the bank charge of $30, and pay the state fee of $30 for a total of " + fullTotal + " within 10 days per South Carolina Law to avoid further collection action. \n \n If you have questions about this, please contact the Bounce House Check Collection office at 864-555-5555 between the hours of 9 and 5. \n Sincerely, \n \n David Tabor - Bounce House Collection Agency");
+                    paragraph = new Paragraph("Dear Sir or Madam, \n \n Your check number '" + checkNo + "' from account '" + acctID + "' in the amount of $" + amtDueInt + ", dated " + checkDate + ",  has been returned by the bank. \n We have verified with your bank that there are insufficient funds to pay the check. \n This is your second notice. Please replace this check with cash or a money order, pay the bank charge of $30, and pay the state fee of $30 for a total of " + fullTotal + " within 10 days per South Carolina Law to avoid further collection action. \n \n If you have questions about this, please contact the Bounce House Check Collection office at 864-555-5555 between the hours of 9 and 5. \n Sincerely, \n \n David Tabor - Bounce House Collection Agency");
                     Document doc = new Document(iTextSharp.text.PageSize.LETTER);
                     PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(filepath, FileMode.Create));
                     doc.Open();
@@ -154,7 +154,7 @@ namespace webapp.SOURCE
                 }
                 case 2:
                 {
-                    paragraph = new Paragraph("Dear Sir or Madam, \n \n Your check number " + checkNo + "' from account '" + acctID + "' in the amount of $" + amtDueInt + ", dated " + checkDate + ",  has been returned by the bank. \n We have verified with your bank that there are insufficient funds to pay the check. \n This is your third notice. Please replace this check with cash or a money order, pay the bank charge of $30, and pay the state fee of $30 for a total of " + fullTotal + " within 10 days per South Carolina Law to avoid further collection action. \n \n If payment is not recieved within 14 days legal action will be taken to the full measure of the law. \n If you have questions about this, please contact the Bounce House Check Collection office at 864-555-5555 between the hours of 9 and 5. \n Sincerely, \n \n David Tabor - Bounce House Collection Agency");
+                    paragraph = new Paragraph("Dear Sir or Madam, \n \n Your check number '" + checkNo + "' from account '" + acctID + "' in the amount of $" + amtDueInt + ", dated " + checkDate + ",  has been returned by the bank. \n We have verified with your bank that there are insufficient funds to pay the check. \n This is your third notice. Please replace this check with cash or a money order, pay the bank charge of $30, and pay the state fee of $30 for a total of " + fullTotal + " within 10 days per South Carolina Law to avoid further collection action. \n \n If payment is not recieved within 14 days legal action will be taken to the full measure of the law. \n If you have questions about this, please contact the Bounce House Check Collection office at 864-555-5555 between the hours of 9 and 5. \n Sincerely, \n \n David Tabor - Bounce House Collection Agency");
                     Document doc = new Document(iTextSharp.text.PageSize.LETTER);
                     PdfWriter wri = PdfWriter.GetInstance(doc, new FileStream(filepath, FileMode.Create));
                     doc.Open();
@@ -186,11 +186,21 @@ namespace webapp.SOURCE
         }
         public static bool CreateMergedPDF()
         {
-            string filepath = @"c:\tempMerge\mergePDF.pdf";
+            string filePath = @"c:\tempMerge\";
+            string fileName = "mergePDF.pdf";
+            string fileCombo = filePath + fileName;
+            
+
+            if(!File.Exists(filePath)) 
+            {
+                 //This path is a file
+                System.IO.Directory.CreateDirectory(filePath);
+            }             
+
             string sourceDir = HttpContext.Current.Server.MapPath("~/App_Data/singlePDFs");
             try
             {
-                using (FileStream stream = new FileStream(filepath, FileMode.Create))
+                using (FileStream stream = new FileStream(fileCombo, FileMode.Create))
                 {
                     Document pdfDoc = new Document(PageSize.LETTER);
                     PdfCopy pdf = new PdfCopy(pdfDoc, stream);
@@ -220,7 +230,7 @@ namespace webapp.SOURCE
                 }
                
             }
-            return true;
+            return false;
         }
     }
 }
